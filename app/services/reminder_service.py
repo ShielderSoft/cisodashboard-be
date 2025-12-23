@@ -6,11 +6,13 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_, func
 from collections import defaultdict
 
-from app.models.models import Application, Vulnerability, User, VulnerabilityStatus
+from app.models.models import Application, Vulnerability, User, VulnerabilityStatus, Vendor, VendorComplianceRecord, Exception as ExceptionModel, ComplianceStatus
 from app.schemas.reminder import (
     ReminderResponse, OwnerReminderData, ApplicationReminderData,
     OwnerApplicationData, ApplicationInstanceData,
-    VulnerabilityCounts, DelayCounts, ReminderStats
+    VulnerabilityCounts, DelayCounts, ReminderStats,
+    FrontendReminderResponse, VendorReminderItem, ApplicationReminderItem,
+    ExceptionReminderItem, FrontendReminderStats
 )
 
 logger = logging.getLogger(__name__)
@@ -293,4 +295,263 @@ class ReminderService:
             return {
                 "success": False,
                 "message": f"Failed to send reminder: {str(e)}"
+            }
+
+    @staticmethod
+    async def get_frontend_reminder_data(db: AsyncSession) -> FrontendReminderResponse:
+        """
+        Get reminder data formatted for the frontend Reminder page
+        
+        Returns data in three categories:
+        - Vendor reminders: Vendors with non-compliant applications
+        - Application reminders: Applications with vulnerabilities/delays
+        - Exception reminders: Active exceptions requiring attention
+        
+        Args:
+            db: Database session
+            
+        Returns:
+            FrontendReminderResponse with all three reminder categories
+        """
+        try:
+            # Get vendor reminders - vendors with expired or non-compliant records
+            vendor_reminders = []
+            
+            # Query vendors with non-compliant compliance records
+            vendor_stmt = select(Vendor).where(Vendor.compliance_status == ComplianceStatus.NON_COMPLIANT)
+            vendor_result = await db.execute(vendor_stmt)
+            vendors = vendor_result.scalars().all()
+            
+            for vendor in vendors:
+                # Get vendor compliance records to calculate delay
+                compliance_stmt = select(VendorComplianceRecord).where(
+                    and_(
+                        VendorComplianceRecord.vendor_id == vendor.id,
+                        VendorComplianceRecord.status == ComplianceStatus.NON_COMPLIANT
+                    )
+                )
+                compliance_result = await db.execute(compliance_stmt)
+                compliance_records = compliance_result.scalars().all()
+                
+                # Calculate delay days (days since last assessment or expiry)
+                max_delay = 0
+                today = date.today()
+                for record in compliance_records:
+                    if record.expiry_date and record.expiry_date < today:
+                        delay = (today - record.expiry_date).days
+                        max_delay = max(max_delay, delay)
+                    elif record.assessment_date:
+                        # If no expiry, use assessment date
+                        delay = (today - record.assessment_date).days
+                        max_delay = max(max_delay, delay)
+                
+                # Count non-compliant "apps" (compliance records)
+                non_compliant_count = len(compliance_records)
+                
+                if non_compliant_count > 0:
+                    vendor_reminders.append(VendorReminderItem(
+                        id=f"VR-{vendor.id}",
+                        vendorName=vendor.name,
+                        nonCompliantApps=non_compliant_count,
+                        delayDays=max_delay,
+                        sentCount=0  # TODO: Track reminder history
+                    ))
+            
+            # Get application reminders - applications with open vulnerabilities
+            application_reminders = []
+            
+            # Query applications with open vulnerabilities
+            app_stmt = select(Application).where(Application.owner_id.isnot(None))
+            app_result = await db.execute(app_stmt)
+            applications = app_result.scalars().all()
+            
+            # Get all open vulnerabilities
+            vuln_stmt = select(Vulnerability).where(Vulnerability.status == VulnerabilityStatus.OPEN)
+            vuln_result = await db.execute(vuln_stmt)
+            vulnerabilities = vuln_result.scalars().all()
+            
+            # Group vulnerabilities by application
+            vuln_by_app = defaultdict(list)
+            for vuln in vulnerabilities:
+                if vuln.application_id:
+                    vuln_by_app[vuln.application_id].append(vuln)
+            
+            # Get user details for owners
+            user_ids = [app.owner_id for app in applications if app.owner_id]
+            if user_ids:
+                user_stmt = select(User).where(User.id.in_(user_ids))
+                user_result = await db.execute(user_stmt)
+                users = {user.id: user for user in user_result.scalars().all()}
+            else:
+                users = {}
+            
+            # Process applications with vulnerabilities
+            for app in applications:
+                if not app.owner_id:
+                    continue
+                
+                app_vulns = vuln_by_app.get(app.id, [])
+                if not app_vulns:
+                    continue
+                
+                owner = users.get(app.owner_id)
+                if not owner:
+                    continue
+                
+                owner_name = owner.full_name or owner.email
+                
+                # Calculate max delay from vulnerabilities
+                max_delay = 0
+                today = datetime.now(timezone.utc)
+                for vuln in app_vulns:
+                    if vuln.discovered_date:
+                        discovered = vuln.discovered_date
+                        if isinstance(discovered, date) and not isinstance(discovered, datetime):
+                            discovered = datetime.combine(discovered, datetime.min.time(), tzinfo=timezone.utc)
+                        delay = (today - discovered).days
+                        max_delay = max(max_delay, delay)
+                
+                application_reminders.append(ApplicationReminderItem(
+                    id=f"AR-{app.id}",
+                    owner=owner_name,
+                    application=app.name,
+                    delayDays=max_delay,
+                    sentCount=0,  # TODO: Track reminder history
+                    applicationId=app.id,
+                    ownerId=app.owner_id
+                ))
+            
+            # Get exception reminders - active exceptions
+            exception_reminders = []
+            
+            # Query active exceptions
+            exception_stmt = select(ExceptionModel).where(
+                ExceptionModel.status.in_(['active', 'pending'])
+            )
+            exception_result = await db.execute(exception_stmt)
+            exceptions = exception_result.scalars().all()
+            
+            for exc in exceptions:
+                # Use exception_name as type and comments/risk_assessment as remark
+                exception_type = exc.exception_name or exc.category or "Unknown Exception"
+                remark = exc.comments or exc.risk_assessment or "No remarks available"
+                
+                exception_reminders.append(ExceptionReminderItem(
+                    id=f"ER-{exc.id}",
+                    exceptionType=exception_type,
+                    remark=remark,
+                    sentCount=0,  # TODO: Track reminder history
+                    exceptionId=exc.id
+                ))
+            
+            # Calculate statistics
+            stats = FrontendReminderStats(
+                vendors=len(vendor_reminders),
+                applications=len(application_reminders),
+                exceptions=len(exception_reminders)
+            )
+            
+            return FrontendReminderResponse(
+                vendorReminders=vendor_reminders,
+                applicationReminders=application_reminders,
+                exceptionReminders=exception_reminders,
+                stats=stats
+            )
+            
+        except Exception as e:
+            logger.error(f"Error fetching frontend reminder data: {str(e)}")
+            raise
+
+    @staticmethod
+    async def send_vendor_reminder(
+        db: AsyncSession,
+        vendor_id: int
+    ) -> Dict:
+        """
+        Send reminder for a vendor (placeholder - actual email sending would go here)
+        
+        Args:
+            db: Database session
+            vendor_id: Vendor ID
+            
+        Returns:
+            Dict with success status and message
+        """
+        try:
+            # Fetch vendor
+            stmt = select(Vendor).where(Vendor.id == vendor_id)
+            result = await db.execute(stmt)
+            vendor = result.scalar_one_or_none()
+            
+            if not vendor:
+                return {
+                    "success": False,
+                    "message": f"Vendor {vendor_id} not found",
+                    "remindedAt": datetime.now().isoformat()
+                }
+            
+            # TODO: Implement actual reminder sending logic (email, notification, etc.)
+            # For now, just log and return success
+            
+            logger.info(f"Reminder sent for vendor {vendor.name} (ID: {vendor_id})")
+            
+            return {
+                "success": True,
+                "message": f"Vendor reminder sent successfully to {vendor.name}",
+                "remindedAt": datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            logger.error(f"Error sending vendor reminder: {str(e)}")
+            return {
+                "success": False,
+                "message": f"Failed to send vendor reminder: {str(e)}",
+                "remindedAt": datetime.now().isoformat()
+            }
+
+    @staticmethod
+    async def send_exception_reminder(
+        db: AsyncSession,
+        exception_id: int
+    ) -> Dict:
+        """
+        Send reminder for an exception (placeholder - actual email sending would go here)
+        
+        Args:
+            db: Database session
+            exception_id: Exception ID
+            
+        Returns:
+            Dict with success status and message
+        """
+        try:
+            # Fetch exception
+            stmt = select(ExceptionModel).where(ExceptionModel.id == exception_id)
+            result = await db.execute(stmt)
+            exception = result.scalar_one_or_none()
+            
+            if not exception:
+                return {
+                    "success": False,
+                    "message": f"Exception {exception_id} not found",
+                    "remindedAt": datetime.now().isoformat()
+                }
+            
+            # TODO: Implement actual reminder sending logic (email, notification, etc.)
+            # For now, just log and return success
+            
+            logger.info(f"Reminder sent for exception {exception.exception_name} (ID: {exception_id})")
+            
+            return {
+                "success": True,
+                "message": f"Exception reminder sent successfully for {exception.exception_name}",
+                "remindedAt": datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            logger.error(f"Error sending exception reminder: {str(e)}")
+            return {
+                "success": False,
+                "message": f"Failed to send exception reminder: {str(e)}",
+                "remindedAt": datetime.now().isoformat()
             }

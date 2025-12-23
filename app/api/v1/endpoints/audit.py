@@ -9,7 +9,8 @@ from app.services.audit_service import audit_service
 from app.schemas.audit import (
     AuditStatisticsResponse,
     ComplianceDataResponse,
-    TopVendorsResponse
+    TopVendorsResponse,
+    AuditHistoryResponse
 )
 
 router = APIRouter()
@@ -83,3 +84,20 @@ async def get_top_vendors(
         - compliant_percentage: Compliance percentage as string
     """
     return await audit_service.get_top_vendors(db, limit=limit)
+
+
+@router.get("/history", response_model=AuditHistoryResponse)
+async def get_audit_history(
+    db: AsyncSession = Depends(get_session)
+) -> AuditHistoryResponse:
+    """
+    Get comprehensive audit history data for the dashboard
+    
+    Returns:
+        - complianceHistory: 12 months of compliance percentage trends
+        - tprmCompliance: 12 months of TPRM vendor compliance trends
+        - expiredVendors: List of vendors with expired compliance
+        - exceptionTrends: 12 months of exception counts by risk level
+        - standardCompliance: Compliance percentages for ISO 27001 and PCI-DSS
+    """
+    return await audit_service.get_audit_history(db)

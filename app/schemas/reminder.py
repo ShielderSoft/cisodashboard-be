@@ -73,8 +73,19 @@ class ReminderResponse(BaseModel):
 
 class SendReminderRequest(BaseModel):
     """Request to send a reminder"""
-    applicationId: int = Field(..., description="Application ID")
+    # For application reminders
+    applicationId: Optional[int] = Field(None, description="Application ID")
     ownerId: Optional[int] = Field(None, description="Owner ID (user ID), if None sends to all owners of the application")
+    
+    # For generic reminders (vendor, exception, etc.)
+    targetType: Optional[str] = Field(None, description="Type of target: 'application', 'vendor', 'exception'")
+    targetId: Optional[int] = Field(None, description="ID of the target entity")
+    
+    # For vendor reminders
+    vendorId: Optional[int] = Field(None, description="Vendor ID")
+    
+    # For exception reminders
+    exceptionId: Optional[int] = Field(None, description="Exception ID")
 
 
 class SendReminderResponse(BaseModel):
@@ -82,3 +93,48 @@ class SendReminderResponse(BaseModel):
     success: bool
     message: str
     remindedAt: datetime
+
+
+# Frontend-specific schemas for the Reminder page
+class VendorReminderItem(BaseModel):
+    """Vendor reminder item for frontend"""
+    id: str
+    vendorName: str
+    nonCompliantApps: int
+    delayDays: int
+    sentCount: int = 0
+
+
+class ApplicationReminderItem(BaseModel):
+    """Application reminder item for frontend"""
+    id: str
+    owner: str
+    application: str
+    delayDays: int
+    sentCount: int = 0
+    applicationId: Optional[int] = None
+    ownerId: Optional[int] = None
+
+
+class ExceptionReminderItem(BaseModel):
+    """Exception reminder item for frontend"""
+    id: str
+    exceptionType: str
+    remark: str
+    sentCount: int = 0
+    exceptionId: Optional[int] = None
+
+
+class FrontendReminderStats(BaseModel):
+    """Statistics for frontend reminder page"""
+    vendors: int
+    applications: int
+    exceptions: int
+
+
+class FrontendReminderResponse(BaseModel):
+    """Complete frontend reminder data response"""
+    vendorReminders: List[VendorReminderItem]
+    applicationReminders: List[ApplicationReminderItem]
+    exceptionReminders: List[ExceptionReminderItem]
+    stats: FrontendReminderStats

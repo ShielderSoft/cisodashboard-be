@@ -1,17 +1,47 @@
 from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
+import logging
 
 from app.db.session import get_session
+from app.services.dashboard_service import dashboard_service
+from app.schemas.dashboard import DashboardDataResponse
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
-@router.get("/")
+@router.get("/data", response_model=DashboardDataResponse)
 async def get_dashboard_data(
     db: AsyncSession = Depends(get_session)
 ):
-    """Get main dashboard data"""
+    """
+    Get complete dashboard data for the main vulnerability dashboard
+    
+    Returns:
+        DashboardDataResponse with all dashboard components:
+        - applications: List of applications with vulnerability counts
+        - delayedVulnerabilities: Vulnerabilities grouped by time frame
+        - overallVulnerabilityStatus: Open vs closed vulnerability counts
+        - applicationTypeVulnerabilities: Vulnerabilities by app type (internal/external)
+        - detailedVulnerabilities: Detailed breakdown by application
+    """
+    try:
+        dashboard_data = await dashboard_service.get_dashboard_data(db)
+        return dashboard_data
+    except Exception as e:
+        logger.error(f"Error fetching dashboard data: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to fetch dashboard data: {str(e)}"
+        )
+
+
+@router.get("/")
+async def get_dashboard_summary(
+    db: AsyncSession = Depends(get_session)
+):
+    """Get main dashboard summary (legacy endpoint)"""
     return {
         "summary": {
             "totalApplications": 47,

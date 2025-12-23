@@ -15,7 +15,9 @@ from app.api.v1.endpoints import (
     reports,
     exceptions,
     audit,
-    reminders
+    reminders,
+    tprm,
+    app_history
 )
 
 # Create main API router
@@ -36,4 +38,5 @@ api_router.include_router(dashboard.router, prefix="/dashboard", tags=["dashboar
 api_router.include_router(reports.router, prefix="/reports", tags=["reports"])
 api_router.include_router(audit.router, prefix="/audit", tags=["audit"])
 api_router.include_router(reminders.router, prefix="/reminders", tags=["reminders"])
-api_router.include_router(reminders.router, prefix="/reminders", tags=["reminders"])
+api_router.include_router(tprm.router, prefix="/tprm", tags=["tprm"])
+api_router.include_router(app_history.router, prefix="/app-history", tags=["app-history"])
