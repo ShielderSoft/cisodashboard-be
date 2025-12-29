@@ -1,0 +1,765 @@
+INFO:     Will watch for changes in these directories: ['/Users/root1/Downloads/ RiskTrix/risktrix-backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [16885] using WatchFiles
+/Users/root1/Downloads/ RiskTrix/risktrix-backend/venv/lib/python3.11/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [16941]
+INFO:     Waiting for application startup.
+2025-12-29 16:37:06 - app.main - INFO - 🚀 Starting RiskTrix Backend Application...
+2025-12-29 16:37:06 - app.main - INFO - Environment: development
+2025-12-29 16:37:06 - app.main - INFO - API Version: 1.0.0
+INFO:     Application startup complete.
+2025-12-29 16:37:14 - app.main - INFO - 📨 GET http://localhost:8000/health
+2025-12-29 16:37:14 - app.main - INFO - ⚡ Completed in 0.0009s - Status: 200
+INFO:     127.0.0.1:49339 - "GET /health HTTP/1.1" 200 OK
+2025-12-29 16:37:20 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:37:22 - app.main - INFO - ⚡ Completed in 1.3408s - Status: 502
+INFO:     127.0.0.1:49376 - "GET /api/v1/intelligence/weekly HTTP/1.1" 502 Bad Gateway
+WARNING:  WatchFiles detected changes in 'app/api/v1/endpoints/intelligence.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-12-29 16:37:30 - app.main - INFO - 🛑 Shutting down RiskTrix Backend Application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [16941]
+/Users/root1/Downloads/ RiskTrix/risktrix-backend/venv/lib/python3.11/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [17219]
+INFO:     Waiting for application startup.
+2025-12-29 16:37:31 - app.main - INFO - 🚀 Starting RiskTrix Backend Application...
+2025-12-29 16:37:31 - app.main - INFO - Environment: development
+2025-12-29 16:37:31 - app.main - INFO - API Version: 1.0.0
+INFO:     Application startup complete.
+2025-12-29 16:37:40 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:37:41 - app.main - INFO - ⚡ Completed in 1.5300s - Status: 502
+INFO:     127.0.0.1:49474 - "GET /api/v1/intelligence/weekly HTTP/1.1" 502 Bad Gateway
+WARNING:  WatchFiles detected changes in 'app/api/v1/endpoints/intelligence.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-12-29 16:37:48 - app.main - INFO - 🛑 Shutting down RiskTrix Backend Application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [17219]
+/Users/root1/Downloads/ RiskTrix/risktrix-backend/venv/lib/python3.11/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [17395]
+INFO:     Waiting for application startup.
+2025-12-29 16:37:49 - app.main - INFO - 🚀 Starting RiskTrix Backend Application...
+2025-12-29 16:37:49 - app.main - INFO - Environment: development
+2025-12-29 16:37:49 - app.main - INFO - API Version: 1.0.0
+INFO:     Application startup complete.
+2025-12-29 16:37:57 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:37:58 - app.main - INFO - ⚡ Completed in 1.3358s - Status: 502
+INFO:     127.0.0.1:49557 - "GET /api/v1/intelligence/weekly HTTP/1.1" 502 Bad Gateway
+WARNING:  WatchFiles detected changes in 'app/api/v1/endpoints/intelligence.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-12-29 16:38:31 - app.main - INFO - 🛑 Shutting down RiskTrix Backend Application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [17395]
+/Users/root1/Downloads/ RiskTrix/risktrix-backend/venv/lib/python3.11/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [17580]
+INFO:     Waiting for application startup.
+2025-12-29 16:38:31 - app.main - INFO - 🚀 Starting RiskTrix Backend Application...
+2025-12-29 16:38:31 - app.main - INFO - Environment: development
+2025-12-29 16:38:31 - app.main - INFO - API Version: 1.0.0
+INFO:     Application startup complete.
+2025-12-29 16:38:41 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:38:42 - app.main - INFO - ⚡ Completed in 1.0413s - Status: 200
+INFO:     127.0.0.1:49772 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:38:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:38:55 - app.main - INFO - ⚡ Completed in 1.1323s - Status: 200
+INFO:     127.0.0.1:49836 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:39:50 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:39:50,780 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-12-29 16:39:50,780 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:39:50,782 INFO sqlalchemy.engine.Engine select current_schema()
+2025-12-29 16:39:50,782 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:39:50,783 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-12-29 16:39:50,783 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:39:50,785 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:39:50,814 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:50,814 INFO sqlalchemy.engine.Engine [generated in 0.00019s] (12, 2025)
+2025-12-29 16:39:50,817 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:50,817 INFO sqlalchemy.engine.Engine [cached since 0.002917s ago] (11, 2025)
+2025-12-29 16:39:50,818 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:39:50,818 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+2025-12-29 16:39:50,819 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:50,819 INFO sqlalchemy.engine.Engine [generated in 0.00013s] (12, 2025)
+2025-12-29 16:39:50,821 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:50,821 INFO sqlalchemy.engine.Engine [cached since 0.002128s ago] (11, 2025)
+2025-12-29 16:39:50,822 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:39:50,822 INFO sqlalchemy.engine.Engine [generated in 0.00030s] ()
+2025-12-29 16:39:50,825 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:39:50,825 INFO sqlalchemy.engine.Engine [generated in 0.00012s] ()
+2025-12-29 16:39:50,840 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:39:50,840 INFO sqlalchemy.engine.Engine [generated in 0.00028s] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:39:50,843 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:50,843 INFO sqlalchemy.engine.Engine [generated in 0.00008s] (12, 2025)
+2025-12-29 16:39:50,845 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:50,845 INFO sqlalchemy.engine.Engine [cached since 0.001393s ago] (11, 2025)
+2025-12-29 16:39:50,845 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:39:50,845 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+2025-12-29 16:39:50,846 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:39:50 - app.main - INFO - ⚡ Completed in 0.1174s - Status: 200
+INFO:     127.0.0.1:50118 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:39:50 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:39:50,849 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:39:50,849 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:50,849 INFO sqlalchemy.engine.Engine [cached since 0.03481s ago] (12, 2025)
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine [cached since 0.03557s ago] (11, 2025)
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine [cached since 0.03246s ago] ()
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:50,850 INFO sqlalchemy.engine.Engine [cached since 0.03161s ago] (12, 2025)
+2025-12-29 16:39:50,851 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:50,851 INFO sqlalchemy.engine.Engine [cached since 0.03209s ago] (11, 2025)
+2025-12-29 16:39:50,851 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:39:50,851 INFO sqlalchemy.engine.Engine [cached since 0.0296s ago] ()
+2025-12-29 16:39:50,852 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:39:50,852 INFO sqlalchemy.engine.Engine [cached since 0.02698s ago] ()
+2025-12-29 16:39:50,853 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:39:50,853 INFO sqlalchemy.engine.Engine [cached since 0.01334s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:39:50,854 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:50,854 INFO sqlalchemy.engine.Engine [cached since 0.01108s ago] (12, 2025)
+2025-12-29 16:39:50,855 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:50,855 INFO sqlalchemy.engine.Engine [cached since 0.01188s ago] (11, 2025)
+2025-12-29 16:39:50,856 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:39:50,856 INFO sqlalchemy.engine.Engine [cached since 0.01072s ago] ()
+2025-12-29 16:39:50,856 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:39:50 - app.main - INFO - ⚡ Completed in 0.0091s - Status: 200
+INFO:     127.0.0.1:50118 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:39:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:39:54,784 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:39:54,784 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:54,784 INFO sqlalchemy.engine.Engine [cached since 3.978s ago] (12, 2025)
+2025-12-29 16:39:54,785 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:54,785 INFO sqlalchemy.engine.Engine [cached since 3.979s ago] (11, 2025)
+2025-12-29 16:39:54,786 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:39:54,786 INFO sqlalchemy.engine.Engine [cached since 3.976s ago] ()
+2025-12-29 16:39:54,786 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:54,786 INFO sqlalchemy.engine.Engine [cached since 3.975s ago] (12, 2025)
+2025-12-29 16:39:54,787 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:54,787 INFO sqlalchemy.engine.Engine [cached since 3.976s ago] (11, 2025)
+2025-12-29 16:39:54,788 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:39:54,788 INFO sqlalchemy.engine.Engine [cached since 3.974s ago] ()
+2025-12-29 16:39:54,789 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:39:54,789 INFO sqlalchemy.engine.Engine [cached since 3.972s ago] ()
+2025-12-29 16:39:54,791 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:39:54,791 INFO sqlalchemy.engine.Engine [cached since 3.959s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:39:54,801 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:54,802 INFO sqlalchemy.engine.Engine [cached since 3.966s ago] (12, 2025)
+2025-12-29 16:39:54,803 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:54,803 INFO sqlalchemy.engine.Engine [cached since 3.967s ago] (11, 2025)
+2025-12-29 16:39:54,803 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:39:54,803 INFO sqlalchemy.engine.Engine [cached since 3.966s ago] ()
+2025-12-29 16:39:54,804 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:39:54 - app.main - INFO - ⚡ Completed in 0.0220s - Status: 200
+INFO:     127.0.0.1:50118 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:39:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:39:54,806 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:39:54,806 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:54,806 INFO sqlalchemy.engine.Engine [cached since 4s ago] (12, 2025)
+2025-12-29 16:39:54,806 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine [cached since 4s ago] (11, 2025)
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine [cached since 3.997s ago] ()
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine [cached since 3.996s ago] (12, 2025)
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:39:54,807 INFO sqlalchemy.engine.Engine [cached since 3.997s ago] (11, 2025)
+2025-12-29 16:39:54,808 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:39:54,808 INFO sqlalchemy.engine.Engine [cached since 3.994s ago] ()
+2025-12-29 16:39:54,808 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:39:54,808 INFO sqlalchemy.engine.Engine [cached since 3.991s ago] ()
+2025-12-29 16:39:54,809 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:39:54,809 INFO sqlalchemy.engine.Engine [cached since 3.977s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine [cached since 3.974s ago] (12, 2025)
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine [cached since 3.975s ago] (11, 2025)
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:39:54,810 INFO sqlalchemy.engine.Engine [cached since 3.973s ago] ()
+2025-12-29 16:39:54,811 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:39:54 - app.main - INFO - ⚡ Completed in 0.0062s - Status: 200
+INFO:     127.0.0.1:50118 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:40:05 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:40:05,943 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:40:05,943 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:40:05,943 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (12, 2025)
+2025-12-29 16:40:05,944 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:40:05,944 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (11, 2025)
+2025-12-29 16:40:05,945 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:40:05,945 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] ()
+2025-12-29 16:40:05,945 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:40:05,945 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (12, 2025)
+2025-12-29 16:40:05,946 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:40:05,946 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (11, 2025)
+2025-12-29 16:40:05,947 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:40:05,947 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] ()
+2025-12-29 16:40:05,948 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:40:05,948 INFO sqlalchemy.engine.Engine [cached since 15.14s ago] ()
+2025-12-29 16:40:05,950 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:40:05,950 INFO sqlalchemy.engine.Engine [cached since 15.13s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:40:05,951 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:40:05,951 INFO sqlalchemy.engine.Engine [cached since 15.13s ago] (12, 2025)
+2025-12-29 16:40:05,952 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:40:05,952 INFO sqlalchemy.engine.Engine [cached since 15.13s ago] (11, 2025)
+2025-12-29 16:40:05,952 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:40:05,952 INFO sqlalchemy.engine.Engine [cached since 15.13s ago] ()
+2025-12-29 16:40:05,953 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:40:05 - app.main - INFO - ⚡ Completed in 0.0129s - Status: 200
+INFO:     127.0.0.1:50198 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:40:05 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:40:05,957 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:40:05,957 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:40:05,957 INFO sqlalchemy.engine.Engine [cached since 15.16s ago] (12, 2025)
+2025-12-29 16:40:05,960 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:40:05,961 INFO sqlalchemy.engine.Engine [cached since 15.17s ago] (11, 2025)
+2025-12-29 16:40:05,963 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:40:05,963 INFO sqlalchemy.engine.Engine [cached since 15.17s ago] ()
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine [cached since 15.17s ago] (12, 2025)
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine [cached since 15.17s ago] (11, 2025)
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:40:05,964 INFO sqlalchemy.engine.Engine [cached since 15.16s ago] ()
+2025-12-29 16:40:05,965 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:40:05,965 INFO sqlalchemy.engine.Engine [cached since 15.16s ago] ()
+2025-12-29 16:40:05,966 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:40:05,966 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:40:05,968 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:40:05,968 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (12, 2025)
+2025-12-29 16:40:05,970 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:40:05,970 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] (11, 2025)
+2025-12-29 16:40:05,970 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:40:05,970 INFO sqlalchemy.engine.Engine [cached since 15.15s ago] ()
+2025-12-29 16:40:05,971 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:40:05 - app.main - INFO - ⚡ Completed in 0.0166s - Status: 200
+INFO:     127.0.0.1:50198 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:41:23 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:41:23,749 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:41:23,749 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:41:23,750 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (12, 2025)
+2025-12-29 16:41:23,750 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:41:23,750 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (11, 2025)
+2025-12-29 16:41:23,751 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:41:23,751 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] ()
+2025-12-29 16:41:23,752 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:41:23,753 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (12, 2025)
+2025-12-29 16:41:23,754 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:41:23,754 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (11, 2025)
+2025-12-29 16:41:23,760 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:41:23,760 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] ()
+2025-12-29 16:41:23,767 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:41:23,767 INFO sqlalchemy.engine.Engine [cached since 92.98s ago] ()
+2025-12-29 16:41:23,769 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:41:23,769 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:41:23,772 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:41:23,772 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (12, 2025)
+2025-12-29 16:41:23,772 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:41:23,772 INFO sqlalchemy.engine.Engine [cached since 92.97s ago] (11, 2025)
+2025-12-29 16:41:23,773 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:41:23,773 INFO sqlalchemy.engine.Engine [cached since 92.96s ago] ()
+2025-12-29 16:41:23,773 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:41:23 - app.main - INFO - ⚡ Completed in 0.0565s - Status: 200
+INFO:     127.0.0.1:50559 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:41:40 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:41:40 - app.main - INFO - 📨 GET http://localhost:8000/intelligence/weekly
+2025-12-29 16:41:40 - app.main - INFO - ⚡ Completed in 0.0008s - Status: 404
+INFO:     127.0.0.1:50640 - "GET /intelligence/weekly HTTP/1.1" 404 Not Found
+2025-12-29 16:41:40,421 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:41:40,422 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:41:40,422 INFO sqlalchemy.engine.Engine [cached since 109.6s ago] (12, 2025)
+2025-12-29 16:41:40,424 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:41:40,424 INFO sqlalchemy.engine.Engine [cached since 109.6s ago] (11, 2025)
+2025-12-29 16:41:40,425 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:41:40,425 INFO sqlalchemy.engine.Engine [cached since 109.6s ago] ()
+2025-12-29 16:41:40,427 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:41:40,427 INFO sqlalchemy.engine.Engine [cached since 109.6s ago] (12, 2025)
+2025-12-29 16:41:40,429 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:41:40,429 INFO sqlalchemy.engine.Engine [cached since 109.6s ago] (11, 2025)
+2025-12-29 16:41:40,450 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:41:40,451 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] ()
+2025-12-29 16:41:40,452 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:41:40,452 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] ()
+2025-12-29 16:41:40,455 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:41:40,455 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:41:40,459 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:41:40,459 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] (12, 2025)
+2025-12-29 16:41:40,460 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:41:40,460 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] (11, 2025)
+2025-12-29 16:41:40,461 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:41:40,461 INFO sqlalchemy.engine.Engine [cached since 109.7s ago] ()
+2025-12-29 16:41:40,462 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:41:40 - app.main - INFO - ⚡ Completed in 0.0452s - Status: 200
+INFO:     127.0.0.1:50638 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:44:01 - app.main - INFO - 📨 GET http://localhost:8000/health
+2025-12-29 16:44:01 - app.main - INFO - ⚡ Completed in 0.0004s - Status: 200
+INFO:     127.0.0.1:51300 - "GET /health HTTP/1.1" 200 OK
+2025-12-29 16:44:08 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:44:09 - app.main - INFO - ⚡ Completed in 1.2203s - Status: 200
+INFO:     127.0.0.1:51333 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:44:42 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:44:44 - app.main - INFO - ⚡ Completed in 1.1057s - Status: 200
+INFO:     127.0.0.1:51501 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:44:59 - app.main - INFO - 📨 GET http://localhost:8000/health
+2025-12-29 16:44:59 - app.main - INFO - ⚡ Completed in 0.0003s - Status: 200
+INFO:     127.0.0.1:51579 - "GET /health HTTP/1.1" 200 OK
+2025-12-29 16:44:59 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:45:00 - app.main - INFO - ⚡ Completed in 1.6379s - Status: 200
+INFO:     127.0.0.1:51581 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:45:14 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:45:14 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:45:14,489 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:45:14,490 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:45:14,490 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,491 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:45:14,491 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,492 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:45:14,493 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:45:14,494 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,495 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:45:14,495 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,495 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:45:14,496 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:45:14,497 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,498 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:45:14 - app.main - INFO - ⚡ Completed in 0.0232s - Status: 200
+INFO:     127.0.0.1:51673 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:45:14 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:45:14,501 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:45:14,502 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:45:14,502 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,505 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:45:14,505 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,506 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:45:14,506 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,509 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:45:14,509 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,511 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:45:14,511 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,512 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:45:14,512 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,512 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:45:14,513 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,514 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:45:14,514 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (12, 2025)
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] (11, 2025)
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:45:14,515 INFO sqlalchemy.engine.Engine [cached since 323.7s ago] ()
+2025-12-29 16:45:14,516 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:45:14 - app.main - INFO - ⚡ Completed in 0.0170s - Status: 200
+INFO:     127.0.0.1:51673 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:45:15 - app.main - INFO - ⚡ Completed in 1.4185s - Status: 200
+INFO:     127.0.0.1:51674 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:45:15 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:45:17 - app.main - INFO - ⚡ Completed in 1.7280s - Status: 200
+INFO:     127.0.0.1:51674 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+WARNING:  WatchFiles detected changes in 'app/api/v1/endpoints/intelligence.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-12-29 16:46:55 - app.main - INFO - 🛑 Shutting down RiskTrix Backend Application...
+INFO:     Application shutdown complete.
+INFO:     Finished server process [17580]
+/Users/root1/Downloads/ RiskTrix/risktrix-backend/venv/lib/python3.11/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [19785]
+INFO:     Waiting for application startup.
+2025-12-29 16:46:56 - app.main - INFO - 🚀 Starting RiskTrix Backend Application...
+2025-12-29 16:46:56 - app.main - INFO - Environment: development
+2025-12-29 16:46:56 - app.main - INFO - API Version: 1.0.0
+INFO:     Application startup complete.
+2025-12-29 16:50:14 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:50:14,531 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+2025-12-29 16:50:14,532 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:50:14,534 INFO sqlalchemy.engine.Engine select current_schema()
+2025-12-29 16:50:14,534 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:50:14,535 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+2025-12-29 16:50:14,535 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-12-29 16:50:14,536 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:50:14,584 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:50:14,584 INFO sqlalchemy.engine.Engine [generated in 0.00020s] (12, 2025)
+2025-12-29 16:50:14,588 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:50:14,588 INFO sqlalchemy.engine.Engine [cached since 0.004546s ago] (11, 2025)
+2025-12-29 16:50:14,589 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:50:14,589 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+2025-12-29 16:50:14,590 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:50:14,590 INFO sqlalchemy.engine.Engine [generated in 0.00010s] (12, 2025)
+2025-12-29 16:50:14,593 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:50:14,593 INFO sqlalchemy.engine.Engine [cached since 0.002793s ago] (11, 2025)
+2025-12-29 16:50:14,594 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:50:14,594 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+2025-12-29 16:50:14,596 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:50:14,596 INFO sqlalchemy.engine.Engine [generated in 0.00007s] ()
+2025-12-29 16:50:14,613 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:50:14,613 INFO sqlalchemy.engine.Engine [generated in 0.00022s] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:50:14,616 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:50:14,616 INFO sqlalchemy.engine.Engine [generated in 0.00009s] (12, 2025)
+2025-12-29 16:50:14,618 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:50:14,618 INFO sqlalchemy.engine.Engine [cached since 0.001614s ago] (11, 2025)
+2025-12-29 16:50:14,618 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:50:14,618 INFO sqlalchemy.engine.Engine [generated in 0.00006s] ()
+2025-12-29 16:50:14,619 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:50:14 - app.main - INFO - ⚡ Completed in 0.1367s - Status: 200
+INFO:     127.0.0.1:53047 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 16:50:49 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 16:50:50 - app.main - INFO - ⚡ Completed in 1.0349s - Status: 200
+INFO:     127.0.0.1:53206 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 16:55:14 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 16:55:14,469 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 16:55:14,470 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:55:14,470 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (12, 2025)
+2025-12-29 16:55:14,471 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 16:55:14,472 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (11, 2025)
+2025-12-29 16:55:14,472 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 16:55:14,472 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] ()
+2025-12-29 16:55:14,473 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:55:14,474 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (12, 2025)
+2025-12-29 16:55:14,475 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 16:55:14,475 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (11, 2025)
+2025-12-29 16:55:14,476 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 16:55:14,476 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] ()
+2025-12-29 16:55:14,480 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 16:55:14,481 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] ()
+2025-12-29 16:55:14,483 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 16:55:14,483 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 16:55:14,486 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:55:14,486 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (12, 2025)
+2025-12-29 16:55:14,487 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 16:55:14,487 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] (11, 2025)
+2025-12-29 16:55:14,487 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 16:55:14,487 INFO sqlalchemy.engine.Engine [cached since 299.9s ago] ()
+2025-12-29 16:55:14,488 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 16:55:14 - app.main - INFO - ⚡ Completed in 0.0245s - Status: 200
+INFO:     127.0.0.1:54423 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 17:22:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 17:22:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 17:22:54,680 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 17:22:54,680 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 17:22:54,680 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,681 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 17:22:54,681 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,681 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 17:22:54,681 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,682 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 17:22:54,682 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,682 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 17:22:54,682 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,683 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 17:22:54,683 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,683 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 17:22:54,683 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,684 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 17:22:54,684 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 17:22:54,685 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,686 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 17:22:54 - app.main - INFO - ⚡ Completed in 0.0201s - Status: 200
+INFO:     127.0.0.1:61873 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 17:22:54 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/yourboard/yourboard-metrics
+2025-12-29 17:22:54,688 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-12-29 17:22:54,688 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 17:22:54,688 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,688 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications 
+WHERE EXTRACT(month FROM applications.created_at) = $1::INTEGER AND EXTRACT(year FROM applications.created_at) = $2::INTEGER
+2025-12-29 17:22:54,688 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine SELECT count(applications.id) AS count_1 
+FROM applications
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities 
+WHERE EXTRACT(month FROM vulnerabilities.created_at) = $1::INTEGER AND EXTRACT(year FROM vulnerabilities.created_at) = $2::INTEGER
+2025-12-29 17:22:54,689 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,690 INFO sqlalchemy.engine.Engine SELECT count(vulnerabilities.id) AS count_1 
+FROM vulnerabilities
+2025-12-29 17:22:54,690 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,690 INFO sqlalchemy.engine.Engine SELECT vendors.id, vendors.name, vendors.description, vendors.category, vendors.contact_email, vendors.contact_phone, vendors.website, vendors.risk_level, vendors.last_risk_assessment, vendors.next_risk_assessment, vendors.contract_start_date, vendors.contract_end_date, vendors.contract_value, vendors.compliance_status, vendors.compliance_rate, vendors.compliant_controls, vendors.non_compliant_controls, vendors.last_compliance_check, vendors.organization_id, vendors.created_at, vendors.updated_at 
+FROM vendors
+2025-12-29 17:22:54,690 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,691 INFO sqlalchemy.engine.Engine SELECT vendor_certificates.vendor_id AS vendor_certificates_vendor_id, vendor_certificates.id AS vendor_certificates_id, vendor_certificates.certificate_type AS vendor_certificates_certificate_type, vendor_certificates.certificate_number AS vendor_certificates_certificate_number, vendor_certificates.issue_date AS vendor_certificates_issue_date, vendor_certificates.expiry_date AS vendor_certificates_expiry_date, vendor_certificates.status AS vendor_certificates_status, vendor_certificates.issuing_authority AS vendor_certificates_issuing_authority, vendor_certificates.certificate_url AS vendor_certificates_certificate_url, vendor_certificates.scope AS vendor_certificates_scope, vendor_certificates.notes AS vendor_certificates_notes, vendor_certificates.application_id AS vendor_certificates_application_id, vendor_certificates.created_at AS vendor_certificates_created_at, vendor_certificates.updated_at AS vendor_certificates_updated_at 
+FROM vendor_certificates 
+WHERE vendor_certificates.vendor_id IN ($1::INTEGER, $2::INTEGER, $3::INTEGER, $4::INTEGER, $5::INTEGER, $6::INTEGER, $7::INTEGER, $8::INTEGER, $9::INTEGER, $10::INTEGER, $11::INTEGER, $12::INTEGER, $13::INTEGER, $14::INTEGER, $15::INTEGER, $16::INTEGER, $17::INTEGER, $18::INTEGER, $19::INTEGER, $20::INTEGER, $21::INTEGER, $22::INTEGER, $23::INTEGER, $24::INTEGER, $25::INTEGER, $26::INTEGER, $27::INTEGER)
+2025-12-29 17:22:54,691 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (26, 27, 8, 7, 10, 11, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 9, 12, 13, 14, 15)
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (12, 2025)
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions 
+WHERE EXTRACT(month FROM exceptions.created_at) = $1::INTEGER AND EXTRACT(year FROM exceptions.created_at) = $2::INTEGER
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine [cached since 1960s ago] (11, 2025)
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine SELECT count(exceptions.id) AS count_1 
+FROM exceptions
+2025-12-29 17:22:54,692 INFO sqlalchemy.engine.Engine [cached since 1960s ago] ()
+2025-12-29 17:22:54,693 INFO sqlalchemy.engine.Engine COMMIT
+2025-12-29 17:22:54 - app.main - INFO - ⚡ Completed in 0.0064s - Status: 200
+INFO:     127.0.0.1:61873 - "GET /api/v1/yourboard/yourboard-metrics HTTP/1.1" 200 OK
+2025-12-29 17:22:55 - app.main - INFO - ⚡ Completed in 1.2969s - Status: 200
+INFO:     127.0.0.1:61874 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK
+2025-12-29 17:22:55 - app.main - INFO - 📨 GET http://localhost:8000/api/v1/intelligence/weekly
+2025-12-29 17:22:57 - app.main - INFO - ⚡ Completed in 1.3299s - Status: 200
+INFO:     127.0.0.1:61873 - "GET /api/v1/intelligence/weekly HTTP/1.1" 200 OK

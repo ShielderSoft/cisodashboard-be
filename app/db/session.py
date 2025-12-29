@@ -54,3 +54,7 @@ async def get_session() -> AsyncSession:
             raise
         finally:
             await session.close()
+
+
+# Alias for backward compatibility
+get_db = get_session
