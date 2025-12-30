@@ -10,6 +10,10 @@ from app.schemas.exception import (
     ExceptionCategoriesResponse
 )
 from app.services.exception_service import exception_service
+from app.services.activity_service import log_exception_activity
+import logging
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -31,7 +35,31 @@ async def create_exception(
     - **end_date**: Exception end date (optional)
     - **comments**: Additional comments (optional)
     """
-    return await exception_service.create_exception(db, exception_data, current_user_id)
+    # Create the exception
+    new_exception = await exception_service.create_exception(db, exception_data, current_user_id)
+    
+    # Log activity
+    try:
+        await log_exception_activity(
+            db=db,
+            activity_type="exception_created",
+            exception_id=new_exception.id,
+            exception_name=new_exception.exception_name,
+            severity=exception_data.severity,
+            user_id=current_user_id,
+            user_name="System User",  # TODO: Get from authenticated user
+            description=f"New exception '{new_exception.exception_name}' created with {exception_data.severity} severity",
+            extra_data={
+                "category": exception_data.category,
+                "status": exception_data.status,
+                "start_date": str(exception_data.start_date) if exception_data.start_date else None,
+                "end_date": str(exception_data.end_date) if exception_data.end_date else None
+            }
+        )
+    except Exception as e:
+        logger.error(f"Failed to log exception activity: {e}")
+    
+    return new_exception
 
 
 @router.get("/", response_model=ExceptionListResponse)
@@ -135,7 +163,26 @@ async def update_exception(
     """
     Update an existing exception.
     """
-    return await exception_service.update_exception(db, exception_id, exception_data, current_user_id)
+    from app.services.activity_service import log_exception_update_activity
+    
+    result = await exception_service.update_exception(db, exception_id, exception_data, current_user_id)
+    
+    # Log the update activity
+    try:
+        updated_fields = exception_data.dict(exclude_unset=True)
+        await log_exception_update_activity(
+            db=db,
+            exception_id=result.id,
+            exception_name=result.exception_name,
+            updated_fields=updated_fields,
+            severity=result.severity,
+            user_id=current_user_id,
+            user_name="System User"
+        )
+    except Exception as e:
+        logger.warning(f"Failed to log exception update activity: {str(e)}")
+    
+    return result
 
 
 @router.patch("/{exception_id}/expiry", response_model=ExceptionResponse)

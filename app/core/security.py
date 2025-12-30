@@ -1,4 +1,4 @@
-from passlib.context import CryptContext
+import bcrypt
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
@@ -6,25 +6,35 @@ from fastapi import HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.core.config import settings
 
-# Password hashing
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 # JWT token handling
 security = HTTPBearer()
 
 
 class SecurityManager:
-    """Centralized security management"""
-    
+    """Centralized security management using the bcrypt library directly."""
+
     @staticmethod
     def verify_password(plain_password: str, hashed_password: str) -> bool:
-        """Verify a password against its hash"""
-        return pwd_context.verify(plain_password, hashed_password)
+        """Verify a password against its bcrypt hash.
+
+        hashed_password is expected to be a utf-8 string created by bcrypt.hashpw(...).decode()
+        """
+        if not plain_password or not hashed_password:
+            return False
+        try:
+            return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+        except Exception:
+            return False
     
     @staticmethod
     def get_password_hash(password: str) -> str:
-        """Generate password hash"""
-        return pwd_context.hash(password)
+        """Generate a bcrypt password hash and return it as a utf-8 string."""
+        if password is None:
+            raise ValueError("Password is required")
+        # bcrypt accepts bytes and returns bytes; decode to store as string
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(password.encode("utf-8"), salt)
+        return hashed.decode("utf-8")
     
     @staticmethod
     def create_access_token(

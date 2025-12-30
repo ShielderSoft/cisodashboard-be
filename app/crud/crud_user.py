@@ -35,6 +35,15 @@ class UserCRUD:
     async def create(self, db: AsyncSession, *, obj_in: UserCreate) -> User:
         """Create a new user"""
         try:
+            # Validate password length (bcrypt has a 72-byte input limit)
+            if not obj_in.password:
+                raise ValueError("Password is required")
+            pw_bytes = obj_in.password.encode("utf-8")
+            # Log only the byte length for debugging (do NOT log the raw password)
+            logger.info(f"Password byte length: {len(pw_bytes)} for user {obj_in.email}")
+            if len(pw_bytes) > 72:
+                raise ValueError("Password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])")
+
             # Hash password
             hashed_password = security_manager.get_password_hash(obj_in.password)
             

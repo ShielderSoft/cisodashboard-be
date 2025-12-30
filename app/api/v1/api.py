@@ -18,7 +18,8 @@ from app.api.v1.endpoints import (
     reminders,
     tprm,
     app_history,
-    yourboard
+    yourboard,
+    activities
 )
 
 # Create main API router
@@ -46,3 +47,6 @@ api_router.include_router(yourboard.router, prefix="/yourboard", tags=["yourboar
 # Intelligence endpoint
 from app.api.v1.endpoints import intelligence
 api_router.include_router(intelligence.router, prefix="", tags=["intelligence"])
+
+# Activity logs endpoint
+api_router.include_router(activities.router, prefix="", tags=["activities"])

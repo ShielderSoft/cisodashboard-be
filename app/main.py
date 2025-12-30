@@ -8,8 +8,10 @@ from contextlib import asynccontextmanager
 
 from app.api.v1.api import api_router
 from app.core.config import settings
-from app.db.session import SessionLocal
+from app.db.session import SessionLocal, sync_engine
 from app.utils.logger import setup_logger
+from sqlalchemy import text
+from app.core.config import settings
 
 logger = setup_logger(__name__)
 
@@ -20,7 +22,9 @@ async def lifespan(app: FastAPI):
     logger.info("🚀 Starting RiskTrix Backend Application...")
     logger.info(f"Environment: {settings.ENVIRONMENT}")
     logger.info(f"API Version: {settings.API_VERSION}")
-    
+    # Ensure users table has expected profile columns (safe, idempotent)
+    # Database schema is managed by Alembic migrations. Please run alembic upgrade head
+
     yield
     
     logger.info("🛑 Shutting down RiskTrix Backend Application...")

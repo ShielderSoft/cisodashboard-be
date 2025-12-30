@@ -1,9 +1,11 @@
 from fastapi import APIRouter, HTTPException, Depends, status, Query
 from typing import List, Optional
 from sqlalchemy.ext.asyncio import AsyncSession
+import logging
 
 from app.db.session import get_session
 from app.services.vendor_service import vendor_service
+from app.services.activity_service import log_vendor_activity
 from app.schemas.vendor import (
     VendorCreate, VendorUpdate, VendorResponse, VendorListResponse,
     VendorFilterParams, VendorDashboardResponse, StandardOptionsResponse,
@@ -12,6 +14,7 @@ from app.schemas.vendor import (
 from app.models.models import RiskLevel, ComplianceStatus
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 @router.post("/", response_model=VendorResponse, status_code=status.HTTP_201_CREATED)
@@ -26,7 +29,29 @@ async def create_vendor(
     If a compliance standard is specified, it will also create an initial
     compliance record for that standard.
     """
-    return await vendor_service.create_vendor(db, vendor_data)
+    # Create the vendor
+    vendor = await vendor_service.create_vendor(db, vendor_data)
+    
+    # Log activity
+    try:
+        await log_vendor_activity(
+            db=db,
+            activity_type="vendor_created",
+            vendor_id=vendor.id,
+            vendor_name=vendor.name,
+            user_id=None,
+            user_name="System User",
+            description=f"New vendor '{vendor.name}' added to the system",
+            metadata={
+                "category": vendor.category,
+                "risk_level": str(vendor.risk_level) if vendor.risk_level else "medium",
+                "compliance_status": str(vendor.compliance_status) if vendor.compliance_status else "pending"
+            }
+        )
+    except Exception as e:
+        logger.error(f"Failed to log vendor activity: {e}")
+    
+    return vendor
 
 
 @router.get("/", response_model=VendorListResponse)
@@ -119,7 +144,25 @@ async def update_vendor(
     Updates an existing vendor with the provided information.
     Only provided fields will be updated, others remain unchanged.
     """
-    return await vendor_service.update_vendor(db, vendor_id, vendor_data)
+    from app.services.activity_service import log_vendor_update_activity
+    
+    result = await vendor_service.update_vendor(db, vendor_id, vendor_data)
+    
+    # Log the update activity
+    try:
+        updated_fields = vendor_data.dict(exclude_unset=True)
+        await log_vendor_update_activity(
+            db=db,
+            vendor_id=result.id,
+            vendor_name=result.name,
+            updated_fields=updated_fields,
+            user_id=None,
+            user_name="System User"
+        )
+    except Exception as e:
+        logger.warning(f"Failed to log vendor update activity: {str(e)}")
+    
+    return result
 
 
 @router.delete("/{vendor_id}", status_code=status.HTTP_204_NO_CONTENT)

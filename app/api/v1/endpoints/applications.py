@@ -2,6 +2,7 @@
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, Query
 from sqlalchemy.ext.asyncio import AsyncSession
+import logging
 
 from app.db.session import get_session
 from app.schemas.application import (
@@ -15,8 +16,10 @@ from app.schemas.application import (
     RiskLevelEnum
 )
 from app.services.application_service import application_service
+from app.services.activity_service import log_application_activity
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
 
 
 @router.post("/", response_model=ApplicationResponse, status_code=status.HTTP_201_CREATED)
@@ -35,10 +38,36 @@ async def create_application(
     - **vendor**: Vendor name if third-party application
     - **vulnerabilities**: Optional array of vulnerabilities to create with the application
     """
-    return await application_service.create_application(
+    # Create the application
+    app = await application_service.create_application(
         db=db,
         application_in=application_in
     )
+    
+    # Log activity
+    try:
+        # Fetch the actual application model to get database fields
+        from app.crud.crud_application import application as crud_app
+        db_app = await crud_app.get(db, id=app.id)
+        
+        await log_application_activity(
+            db=db,
+            activity_type="application_created",
+            application_id=app.id,
+            application_name=app.name,
+            user_id=None,
+            user_name="System User",
+            description=f"New application '{app.name}' created",
+            metadata={
+                "type": str(db_app.application_type.value) if db_app.application_type else "unknown",
+                "risk_level": str(db_app.risk_level.value) if db_app.risk_level else "medium",
+                "owner": db_app.owner
+            }
+        )
+    except Exception as e:
+        logger.error(f"Failed to log application activity: {e}")
+    
+    return app
 
 
 @router.get("/", response_model=ApplicationListResponse)
@@ -112,11 +141,29 @@ async def update_application(
     
     All fields are optional. Only provided fields will be updated.
     """
-    return await application_service.update_application(
+    from app.services.activity_service import log_application_update_activity
+    
+    result = await application_service.update_application(
         db=db,
         application_id=application_id,
         application_in=application_in
     )
+    
+    # Log the update activity
+    try:
+        updated_fields = application_in.dict(exclude_unset=True)
+        await log_application_update_activity(
+            db=db,
+            application_id=result.id,
+            application_name=result.name,
+            updated_fields=updated_fields,
+            user_id=None,
+            user_name="System User"
+        )
+    except Exception as e:
+        logger.warning(f"Failed to log application update activity: {str(e)}")
+    
+    return result
 
 
 @router.delete("/{application_id}", status_code=status.HTTP_204_NO_CONTENT)

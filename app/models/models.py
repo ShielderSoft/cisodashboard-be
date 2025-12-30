@@ -11,12 +11,13 @@ from app.db.session import Base
 
 class UserRole(str, Enum):
     """User roles enumeration"""
-    ADMIN = "admin"
-    CISO = "ciso"
-    SECURITY_ANALYST = "security_analyst"
-    COMPLIANCE_OFFICER = "compliance_officer"
-    AUDITOR = "auditor"
-    VIEWER = "viewer"
+    ADMIN = "ADMIN"
+    STANDARD = "STANDARD"
+    CISO = "CISO"
+    SECURITY_ANALYST = "SECURITY_ANALYST"
+    COMPLIANCE_OFFICER = "COMPLIANCE_OFFICER"
+    AUDITOR = "AUDITOR"
+    VIEWER = "VIEWER"
 
 
 class RiskLevel(str, Enum):
@@ -101,6 +102,11 @@ class User(Base, TimestampMixin):
     last_login = Column(DateTime(timezone=True), nullable=True)
     phone = Column(String(20), nullable=True)
     department = Column(String(100), nullable=True)
+    # Profile-specific fields used by frontend
+    profile_type = Column(String(100), nullable=True)  # e.g., ciso, vendor
+    company = Column(String(255), nullable=True)
+    privilege_level = Column(String(50), default='standard', nullable=False)
+    clearance_level = Column(String(50), default='low', nullable=False)
     
     # Relationships
     created_applications = relationship("Application", back_populates="owner_user")
@@ -509,3 +515,143 @@ class ApplicationReminder(Base, TimestampMixin):
     # Relationships
     application = relationship("Application")
     owner = relationship("User")
+
+
+class ActivityType(str, Enum):
+    """Activity types for tracking system events"""
+    # Application events
+    APPLICATION_CREATED = "application_created"
+    APPLICATION_UPDATED = "application_updated"
+    APPLICATION_DELETED = "application_deleted"
+    
+    # Vendor events
+    VENDOR_CREATED = "vendor_created"
+    VENDOR_UPDATED = "vendor_updated"
+    VENDOR_DELETED = "vendor_deleted"
+    
+    # Certificate events
+    CERTIFICATE_ADDED = "certificate_added"
+    CERTIFICATE_UPDATED = "certificate_updated"
+    CERTIFICATE_EXPIRED = "certificate_expired"
+    CERTIFICATE_EXPIRING_SOON = "certificate_expiring_soon"
+    
+    # Vulnerability events
+    VULNERABILITY_CREATED = "vulnerability_created"
+    VULNERABILITY_UPDATED = "vulnerability_updated"
+    VULNERABILITY_CLOSED = "vulnerability_closed"
+    VULNERABILITY_REOPENED = "vulnerability_reopened"
+    
+    # Compliance events
+    COMPLIANCE_CHECK_COMPLETED = "compliance_check_completed"
+    COMPLIANCE_STATUS_CHANGED = "compliance_status_changed"
+    
+    # Exception events
+    EXCEPTION_CREATED = "exception_created"
+    EXCEPTION_UPDATED = "exception_updated"
+    EXCEPTION_APPROVED = "exception_approved"
+    EXCEPTION_REJECTED = "exception_rejected"
+    EXCEPTION_EXPIRED = "exception_expired"
+    
+    # EOSL events
+    EOSL_ASSET_ADDED = "eosl_asset_added"
+    EOSL_ASSET_UPDATED = "eosl_asset_updated"
+    EOSL_ASSET_EXPIRED = "eosl_asset_expired"
+    EOSL_ASSET_EXPIRING_SOON = "eosl_asset_expiring_soon"
+    
+    # User events
+    USER_LOGIN = "user_login"
+    USER_CREATED = "user_created"
+    USER_UPDATED = "user_updated"
+    
+    # Audit events
+    AUDIT_COMPLETED = "audit_completed"
+    AUDIT_FAILED = "audit_failed"
+    
+    # General system events
+    SYSTEM_ALERT = "system_alert"
+    DATA_EXPORT = "data_export"
+    REPORT_GENERATED = "report_generated"
+
+
+class ActivityPriority(str, Enum):
+    """Priority levels for activities"""
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+    CRITICAL = "critical"
+
+
+class ActivityLog(Base, TimestampMixin):
+    """
+    Activity Log model for tracking all system events and changes.
+    This provides a comprehensive audit trail and general updates feed.
+    
+    Design Principles:
+    - Immutable: Activities should never be modified, only created
+    - Indexed: For fast queries on recent activities
+    - Flexible: JSON metadata field for extensibility
+    - Relational: Links to relevant entities via foreign keys
+    """
+    __tablename__ = "activity_logs"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    
+    # Activity classification
+    # Using String instead of SQLEnum to avoid uppercase conversion issues
+    activity_type = Column(String(100), nullable=False, index=True)
+    priority = Column(String(50), nullable=False, default="medium", index=True)
+    
+    # Activity details
+    title = Column(String(255), nullable=False)  # Short description
+    description = Column(Text, nullable=True)  # Detailed description
+    
+    # Actor information (who performed the action)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True, index=True)
+    user_name = Column(String(255), nullable=True)  # Cached for performance
+    
+    # Entity references (what was affected)
+    entity_type = Column(String(100), nullable=True, index=True)  # e.g., 'application', 'vendor', 'vulnerability'
+    entity_id = Column(Integer, nullable=True, index=True)  # ID of the affected entity
+    entity_name = Column(String(255), nullable=True)  # Cached name for quick display
+    
+    # Additional context
+    extra_data = Column(JSON, nullable=True)  # Flexible field for additional data (renamed from metadata)
+    tags = Column(JSON, nullable=True)  # Tags for categorization ['security', 'compliance']
+    
+    # Status tracking
+    status = Column(String(50), default="active")  # active, archived, hidden
+    is_read = Column(Boolean, default=False)  # For notification purposes
+    
+    # Timestamps (inherited from TimestampMixin but also indexed here)
+    # created_at - automatically set
+    # updated_at - automatically updated
+    
+    # Relationships
+    user = relationship("User", foreign_keys=[user_id])
+    
+    # Indexes for performance
+    __table_args__ = (
+        # Composite index for common queries
+        {'comment': 'Activity log for system-wide event tracking and audit trail'}
+    )
+    
+    def to_dict(self):
+        """Convert activity to dictionary for API responses"""
+        return {
+            "id": self.id,
+            "activity_type": self.activity_type.value if self.activity_type else None,
+            "priority": self.priority.value if self.priority else None,
+            "title": self.title,
+            "description": self.description,
+            "user_id": self.user_id,
+            "user_name": self.user_name,
+            "entity_type": self.entity_type,
+            "entity_id": self.entity_id,
+            "entity_name": self.entity_name,
+            "extra_data": self.extra_data,
+            "tags": self.tags,
+            "status": self.status,
+            "is_read": self.is_read,
+            "created_at": self.created_at.isoformat() if self.created_at else None,
+            "updated_at": self.updated_at.isoformat() if self.updated_at else None,
+        }

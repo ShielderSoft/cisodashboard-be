@@ -6,6 +6,7 @@ import logging
 
 from app.db.session import get_session
 from app.services.eosl_service import eosl_service
+from app.services.activity_service import log_eosl_activity
 from app.schemas.eosl import (
     EOSLAssetCreate, EOSLAssetUpdate, EOSLAssetResponse,
     EOSLAssetListResponse, EOSLDashboardResponse,
@@ -93,6 +94,42 @@ async def create_eosl_asset(
     """Create new EOSL asset"""
     try:
         asset = await eosl_service.create_asset(db, asset_data)
+        
+        # Log activity
+        try:
+            # Determine risk level based on how close to EOSL date
+            from datetime import datetime, timedelta
+            days_until_eosl = (asset_data.eosl_date - datetime.now().date()).days
+            if days_until_eosl < 0:
+                risk_level = "critical"  # Already expired
+            elif days_until_eosl < 90:
+                risk_level = "high"  # Less than 3 months
+            elif days_until_eosl < 180:
+                risk_level = "medium"  # Less than 6 months
+            else:
+                risk_level = "low"
+            
+            await log_eosl_activity(
+                db=db,
+                activity_type="eosl_asset_added",
+                asset_id=asset.id,
+                asset_name=asset_data.asset_name,
+                risk_level=risk_level,
+                user_id=None,
+                user_name="System User",
+                description=f"EOSL asset '{asset_data.asset_name}' added to tracking - {asset_data.eosl_type.value} on {asset_data.eosl_date}",
+                extra_data={
+                    "owner": asset_data.owner,
+                    "asset_type": asset_data.asset_type,
+                    "eosl_type": asset_data.eosl_type.value,
+                    "eosl_date": str(asset_data.eosl_date),
+                    "remark": asset_data.remark,
+                    "risk_level": risk_level
+                }
+            )
+        except Exception as e:
+            logger.error(f"Failed to log EOSL activity: {e}")
+        
         return asset
     except Exception as e:
         logger.error(f"Error creating EOSL asset: {str(e)}")
@@ -110,6 +147,9 @@ async def update_eosl_asset(
 ):
     """Update EOSL asset"""
     try:
+        # Import activity logging function
+        from app.services.activity_service import log_eosl_update_activity
+        
         asset = await eosl_service.update_asset(db, asset_id, asset_data)
         
         if not asset:
@@ -117,6 +157,21 @@ async def update_eosl_asset(
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail=f"EOSL asset with id {asset_id} not found"
             )
+        
+        # Log the update activity
+        try:
+            updated_fields = asset_data.dict(exclude_unset=True)
+            await log_eosl_update_activity(
+                db=db,
+                asset_id=asset.id,
+                asset_name=asset.asset_name,
+                updated_fields=updated_fields,
+                risk_level="high" if asset.eosl_type == "EOL" else "medium",
+                user_id=None,
+                user_name="System User"
+            )
+        except Exception as e:
+            logger.warning(f"Failed to log EOSL asset update activity: {str(e)}")
         
         return asset
     except HTTPException:
