@@ -32,6 +32,30 @@ class UserCRUD:
             logger.error(f"Error getting user by username {username}: {str(e)}")
             return None
 
+    async def get_by_id(self, db: AsyncSession, user_id: int) -> Optional[User]:
+        """Get user by ID"""
+        try:
+            result = await db.execute(select(User).where(User.id == user_id))
+            return result.scalar_one_or_none()
+        except Exception as e:
+            logger.error(f"Error getting user by id {user_id}: {str(e)}")
+            return None
+
+    async def delete_by_id(self, db: AsyncSession, user_id: int) -> bool:
+        """Delete user by ID"""
+        try:
+            user = await self.get_by_id(db, user_id)
+            if not user:
+                return False
+            await db.delete(user)
+            await db.commit()
+            logger.info(f"Deleted user id {user_id}")
+            return True
+        except Exception as e:
+            await db.rollback()
+            logger.error(f"Error deleting user {user_id}: {str(e)}")
+            return False
+
     async def create(self, db: AsyncSession, *, obj_in: UserCreate) -> User:
         """Create a new user"""
         try:
@@ -113,30 +137,6 @@ class UserCRUD:
         except Exception as e:
             logger.error(f"Error authenticating user {email}: {str(e)}")
             return None
-
-
-# User schemas for basic operations
-class UserBase:
-    pass
-
-
-class UserCreate(UserBase):
-    email: str
-    username: str
-    full_name: str
-    password: str
-    is_active: bool = True
-    is_superuser: bool = False
-    role: UserRole = UserRole.VIEWER
-
-
-class UserUpdate(UserBase):
-    email: Optional[str] = None
-    username: Optional[str] = None
-    full_name: Optional[str] = None
-    password: Optional[str] = None
-    is_active: Optional[bool] = None
-    role: Optional[UserRole] = None
 
 
 # Create instance

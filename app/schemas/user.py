@@ -14,6 +14,10 @@ class UserBase(BaseModel):
     full_name: Optional[str] = None
     phone: Optional[str] = None
     department: Optional[str] = None
+    company: Optional[str] = None
+    profile_type: Optional[str] = None
+    privilege_level: Optional[str] = 'standard'
+    clearance_level: Optional[str] = 'low'
 
 
 class UserCreate(UserBase):
@@ -31,6 +35,10 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = None
     phone: Optional[str] = None
     department: Optional[str] = None
+    company: Optional[str] = None
+    profile_type: Optional[str] = None
+    privilege_level: Optional[str] = None
+    clearance_level: Optional[str] = None
     is_active: Optional[bool] = None
     role: Optional[UserRole] = None
     password: Optional[str] = None
@@ -45,6 +53,7 @@ class UserResponse(UserBase):
     last_login: Optional[datetime]
     created_at: datetime
     updated_at: datetime
+    # keep company/profile_type/privilege/clearance included from base
     
     class Config:
         from_attributes = True
