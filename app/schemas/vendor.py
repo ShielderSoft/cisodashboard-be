@@ -88,6 +88,12 @@ class VendorUpdate(BaseModel):
     contract_end_date: Optional[date] = None
     contract_value: Optional[float] = Field(None, ge=0)
     
+    # Certificate information
+    application_name: Optional[str] = Field(None, max_length=255)
+    certificate_type: Optional[str] = Field(None, max_length=100)
+    certificate_issue_date: Optional[date] = None
+    certificate_expiry_date: Optional[date] = None
+    
     @validator('name')
     def validate_name(cls, v):
         if v is not None and (not v or not v.strip()):
@@ -105,6 +111,13 @@ class VendorResponse(VendorBase):
     contract_start_date: Optional[date]
     contract_end_date: Optional[date]
     contract_value: Optional[float]
+    
+    # Certificate information
+    application_name: Optional[str] = None
+    certificate_type: Optional[str] = None
+    certificate_issue_date: Optional[date] = None
+    certificate_expiry_date: Optional[date] = None
+    
     created_at: datetime
     updated_at: datetime
     

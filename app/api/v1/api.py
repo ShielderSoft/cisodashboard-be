@@ -19,7 +19,8 @@ from app.api.v1.endpoints import (
     tprm,
     app_history,
     yourboard,
-    activities
+    activities,
+    vendor_notifications
 )
 
 # Create main API router
@@ -43,6 +44,7 @@ api_router.include_router(reminders.router, prefix="/reminders", tags=["reminder
 api_router.include_router(tprm.router, prefix="/tprm", tags=["tprm"])
 api_router.include_router(app_history.router, prefix="/app-history", tags=["app-history"])
 api_router.include_router(yourboard.router, prefix="/yourboard", tags=["yourboard"])
+api_router.include_router(vendor_notifications.router, prefix="/vendor-notifications", tags=["vendor-notifications"])
 
 # Intelligence endpoint
 from app.api.v1.endpoints import intelligence

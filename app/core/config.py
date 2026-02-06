@@ -54,6 +54,9 @@ class Settings(BaseSettings):
     SMTP_USERNAME: Optional[str] = Field(default=None, env="SMTP_USERNAME")
     SMTP_PASSWORD: Optional[str] = Field(default=None, env="SMTP_PASSWORD")
     SMTP_USE_TLS: bool = Field(default=True, env="SMTP_USE_TLS")
+    # From address / name for outgoing emails (optional)
+    SMTP_FROM_EMAIL: Optional[str] = Field(default=None, env="SMTP_FROM_EMAIL")
+    SMTP_FROM_NAME: str = Field(default="RiskTrix TPRM System", env="SMTP_FROM_NAME")
     
     # File upload configuration
     MAX_UPLOAD_SIZE: int = Field(default=10 * 1024 * 1024, env="MAX_UPLOAD_SIZE")  # 10MB

@@ -12,8 +12,23 @@ from app.db.session import SessionLocal, sync_engine
 from app.utils.logger import setup_logger
 from sqlalchemy import text
 from app.core.config import settings
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from app.services.vendor_expiry_notification import vendor_expiry_notification_service
+from app.db.session import SessionLocal as AsyncSessionLocal
 
 logger = setup_logger(__name__)
+
+# Scheduler for periodic tasks (vendor expiry notifications)
+scheduler = AsyncIOScheduler()
+
+async def _scheduled_expiry_check():
+    """Run vendor expiry notification check for vendors expiring in 8 days."""
+    # Use an async session factory to run the check
+    async with AsyncSessionLocal() as db:
+        try:
+            await vendor_expiry_notification_service.check_and_notify_expiring_vendors(db=db, days_before=8)
+        except Exception as e:
+            logger.error(f"Error running scheduled expiry check: {e}")
 
 
 @asynccontextmanager
@@ -22,10 +37,23 @@ async def lifespan(app: FastAPI):
     logger.info("🚀 Starting RiskTrix Backend Application...")
     logger.info(f"Environment: {settings.ENVIRONMENT}")
     logger.info(f"API Version: {settings.API_VERSION}")
-    # Ensure users table has expected profile columns (safe, idempotent)
-    # Database schema is managed by Alembic migrations. Please run alembic upgrade head
-
+    
+    # Start scheduler
+    try:
+        scheduler.add_job(_scheduled_expiry_check, 'cron', hour=9, minute=0, id='daily_vendor_expiry_check')
+        scheduler.start()
+        logger.info("✅ Scheduler started: daily vendor expiry check at 09:00 AM")
+    except Exception as e:
+        logger.error(f"❌ Failed to start scheduler: {e}")
+    
     yield
+    
+    # Shutdown scheduler
+    try:
+        scheduler.shutdown(wait=False)
+        logger.info("✅ Scheduler shut down")
+    except Exception:
+        pass
     
     logger.info("🛑 Shutting down RiskTrix Backend Application...")
 

@@ -362,6 +362,11 @@ class VendorService:
                 contract_start_date=vendor.contract_start_date,
                 contract_end_date=vendor.contract_end_date,
                 contract_value=vendor.contract_value,
+                # Certificate information
+                application_name=vendor.application_name,
+                certificate_type=vendor.certificate_type,
+                certificate_issue_date=vendor.certificate_issue_date,
+                certificate_expiry_date=vendor.certificate_expiry_date,
                 created_at=vendor.created_at,
                 updated_at=vendor.updated_at,
                 # Compliance metrics

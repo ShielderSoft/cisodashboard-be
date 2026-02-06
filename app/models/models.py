@@ -12,11 +12,11 @@ from app.db.session import Base
 class UserRole(str, Enum):
     """User roles enumeration"""
     ADMIN = "ADMIN"
-    STANDARD = "STANDARD"
     CISO = "CISO"
+    INFOSEC_MANAGER = "INFOSEC_MANAGER"
+    EXTERNAL_AUDITOR = "EXTERNAL_AUDITOR"
+    INTERNAL_AUDITOR = "INTERNAL_AUDITOR"
     SECURITY_ANALYST = "SECURITY_ANALYST"
-    COMPLIANCE_OFFICER = "COMPLIANCE_OFFICER"
-    AUDITOR = "AUDITOR"
     VIEWER = "VIEWER"
 
 
@@ -194,6 +194,12 @@ class Vendor(Base, TimestampMixin):
     contract_start_date = Column(Date, nullable=True)
     contract_end_date = Column(Date, nullable=True)
     contract_value = Column(Numeric(15, 2), nullable=True)
+    
+    # Certificate information (for quick access without joining certificates table)
+    application_name = Column(String(255), nullable=True)
+    certificate_type = Column(String(100), nullable=True)
+    certificate_issue_date = Column(Date, nullable=True)
+    certificate_expiry_date = Column(Date, nullable=True)
     
     # Compliance status
     compliance_status = Column(SQLEnum(ComplianceStatus), default=ComplianceStatus.PENDING, nullable=False)

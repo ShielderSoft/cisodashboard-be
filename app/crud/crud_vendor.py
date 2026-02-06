@@ -20,11 +20,7 @@ class VendorCRUD:
             # Create vendor data dict, excluding non-model fields
             vendor_data = obj_in.dict(exclude={
                 'standard', 
-                'compliance_requirements',
-                'application_name',
-                'certificate_type',
-                'certificate_issue_date',
-                'certificate_expiry_date'
+                'compliance_requirements'
             })
             
             # Create vendor instance
@@ -37,7 +33,11 @@ class VendorCRUD:
             # If initial compliance standard is provided, create compliance record
             if obj_in.standard:
                 await self._create_initial_compliance_record(
-                    db, vendor=db_vendor, standard=obj_in.standard, created_by_id=created_by_id
+                    db, 
+                    vendor=db_vendor, 
+                    standard=obj_in.standard, 
+                    expiry_date=obj_in.certificate_expiry_date,
+                    created_by_id=created_by_id
                 )
             
             logger.info(f"Created vendor: {db_vendor.name} (ID: {db_vendor.id})")
@@ -319,6 +319,7 @@ class VendorCRUD:
         db: AsyncSession, 
         vendor: Vendor, 
         standard: str,
+        expiry_date: Optional[date] = None,
         created_by_id: Optional[int] = None
     ):
         """Create initial compliance record for vendor"""
@@ -328,6 +329,7 @@ class VendorCRUD:
                 compliance_area=standard,
                 status=ComplianceStatus.PENDING,
                 assessment_date=date.today(),
+                expiry_date=expiry_date,  # Set expiry date from vendor certificate
                 assessor_id=created_by_id,
                 notes=f"Initial compliance record for {standard} standard"
             )

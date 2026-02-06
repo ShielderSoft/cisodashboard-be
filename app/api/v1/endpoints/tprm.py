@@ -68,8 +68,11 @@ async def get_tprm_dashboard(
                 "compliance_status": latest_compliance.status.value if latest_compliance else None,
                 "audit_date": latest_compliance.assessment_date.isoformat() if latest_compliance and latest_compliance.assessment_date else None,
                 "auditDate": latest_compliance.assessment_date.isoformat() if latest_compliance and latest_compliance.assessment_date else None,
-                "expiry_date": latest_compliance.expiry_date.isoformat() if latest_compliance and latest_compliance.expiry_date else None,
-                "expiryDate": latest_compliance.expiry_date.isoformat() if latest_compliance and latest_compliance.expiry_date else None,
+                # Use expiry_date from compliance record first, fallback to vendor's certificate_expiry_date
+                "expiry_date": (latest_compliance.expiry_date.isoformat() if latest_compliance and latest_compliance.expiry_date 
+                               else vendor.certificate_expiry_date.isoformat() if vendor.certificate_expiry_date else None),
+                "expiryDate": (latest_compliance.expiry_date.isoformat() if latest_compliance and latest_compliance.expiry_date 
+                              else vendor.certificate_expiry_date.isoformat() if vendor.certificate_expiry_date else None),
                 "standard": latest_compliance.compliance_area if latest_compliance else None,
                 "remarks": latest_compliance.notes if latest_compliance and latest_compliance.notes else "No remarks",
                 "created_at": vendor.created_at.isoformat() if vendor.created_at else None,
@@ -79,8 +82,14 @@ async def get_tprm_dashboard(
             vendor_list.append(vendor_data)
             
             # Check if vendor is expired or delayed
+            # Use expiry_date from compliance record or vendor's certificate_expiry_date
+            expiry_date = None
             if latest_compliance and latest_compliance.expiry_date:
                 expiry_date = latest_compliance.expiry_date
+            elif vendor.certificate_expiry_date:
+                expiry_date = vendor.certificate_expiry_date
+                
+            if expiry_date:
                 if expiry_date < today:
                     # Add days_overdue for expired vendors
                     expired_data = {**vendor_data, "days_overdue": (today - expiry_date).days}
