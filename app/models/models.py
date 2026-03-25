@@ -247,6 +247,7 @@ class Vulnerability(Base, TimestampMixin):
     
     # Closure tracking fields
     remarks = Column(Text, nullable=True)
+    impact = Column(Text, nullable=True)
     poc_file_path = Column(String(500), nullable=True)
     
     # Foreign keys

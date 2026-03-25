@@ -2,6 +2,7 @@
 from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Query
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
 from app.db.session import get_session
 from app.schemas.vulnerability import (
@@ -17,9 +18,220 @@ from app.schemas.vulnerability import (
     RiskLevel,
     POCUploadResponse
 )
+import pandas as pd
+import io
+import math
+import logging
+from datetime import datetime, timezone
+from app.models.models import Vulnerability, Application, RiskLevel as ModelRiskLevel, VulnerabilityStatus, ApplicationType
 from app.services.vulnerability_service import vulnerability_service
 
+logger = logging.getLogger(__name__)
+
+# Column mapping for vulnerabilities
+VULN_COLUMN_MAPPING = {
+    "name": ["vulnerability name", "vulnerability", "title", "name"],
+    "category": ["risk category", "category", "severity", "risk"],
+    "description": ["description", "desc", "details"],
+    "remarks": ["initial remarks", "remarks", "notes", "comment"],
+    "status": ["status", "state"],
+    "open_date": ["open date", "discovery date", "detected date", "date"],
+    "close_date": ["close date", "closure date", "remediation date"],
+    "impact": ["impact", "severity impact"]
+}
+
 router = APIRouter()
+
+
+@router.post("/bulk-upload")
+async def bulk_upload_vulnerabilities(
+    *,
+    db: AsyncSession = Depends(get_session),
+    file: UploadFile = File(...)
+):
+    """
+    Bulk upload vulnerabilities from an Excel file.
+    Automatically creates a new Application named after the file.
+    """
+    if not file.filename.endswith(('.xlsx', '.xls')):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid file format. Please upload an Excel file (.xlsx or .xls)"
+        )
+
+    # 1. Extract Application Name from filename
+    app_name = file.filename.rsplit('.', 1)[0]
+    
+    try:
+        content = await file.read()
+        df = pd.read_excel(io.BytesIO(content))
+    except Exception as e:
+        logger.error(f"Error reading Excel file: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Error reading Excel file: {str(e)}"
+        )
+
+    # Clean column names (lowercase and strip)
+    df.columns = [str(c).strip().lower() for c in df.columns]
+
+    # Flexible column matching
+    found_mapping = {}
+    for tech_name, variations in VULN_COLUMN_MAPPING.items():
+        for var in variations:
+            if var.lower() in df.columns:
+                found_mapping[tech_name] = var.lower()
+                break
+
+    # Validate required columns
+    required_fields = ["name", "category"]
+    missing = [f for f in required_fields if f not in found_mapping]
+    if missing:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Missing required columns: {', '.join([m.capitalize() for m in missing])}"
+        )
+
+    # 2. Get or Create Application
+    try:
+        # Check if application with same name exists
+        stmt = select(Application).where(Application.name == app_name)
+        result = await db.execute(stmt)
+        existing_app = result.scalars().first()
+
+        if existing_app:
+            app_id = existing_app.id
+            logger.info(f"Using existing application: {app_name} (ID: {app_id})")
+        else:
+            # Create new application
+            new_app = Application(
+                name=app_name,
+                application_type=ApplicationType.WEB_APPLICATION, # Default
+                risk_level=ModelRiskLevel.MEDIUM
+            )
+            db.add(new_app)
+            await db.flush() # Get the ID
+            app_id = new_app.id
+            logger.info(f"Created new application: {app_name} (ID: {app_id})")
+    except Exception as e:
+        logger.error(f"Error handling application: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to handle application for vulnerabilities"
+        )
+
+    # 3. Process Vulnerabilities
+    total = len(df)
+    success = 0
+    failed = 0
+    successful_vulns = []
+    errors = []
+
+    # Severity mapping
+    severity_map = {
+        "critical": ModelRiskLevel.CRITICAL,
+        "high": ModelRiskLevel.HIGH,
+        "medium": ModelRiskLevel.MEDIUM,
+        "low": ModelRiskLevel.LOW
+    }
+
+    # Status mapping
+    status_map = {
+        "open": VulnerabilityStatus.OPEN,
+        "closed": VulnerabilityStatus.CLOSED,
+        "in progress": VulnerabilityStatus.IN_PROGRESS,
+        "resolved": VulnerabilityStatus.CLOSED,
+        "fixed": VulnerabilityStatus.CLOSED
+    }
+
+    vulnerabilities = []
+    for idx, row in df.iterrows():
+        row_errors = []
+        
+        # Extract data using mapping
+        name = str(row.get(found_mapping.get("name"), "")).strip() if "name" in found_mapping else ""
+        category_str = str(row.get(found_mapping.get("category"), "")).strip().lower() if "category" in found_mapping else ""
+        description = str(row.get(found_mapping.get("description"), "")).strip() if "description" in found_mapping else ""
+        remarks = str(row.get(found_mapping.get("remarks"), "")).strip() if "remarks" in found_mapping else ""
+        status_str = str(row.get(found_mapping.get("status"), "")).strip().lower() if "status" in found_mapping else ""
+        open_date_val = row.get(found_mapping.get("open_date"))
+        close_date_val = row.get(found_mapping.get("close_date"))
+        impact = str(row.get(found_mapping.get("impact"), "")).strip() if "impact" in found_mapping else ""
+
+        if not name or name == "nan":
+            row_errors.append("Vulnerability Name is required")
+        
+        # Severity
+        severity = severity_map.get(category_str, ModelRiskLevel.MEDIUM)
+        
+        # Status
+        vuln_status = status_map.get(status_str, VulnerabilityStatus.OPEN)
+
+        # Dates
+        def parse_date(val):
+            if pd.isna(val) or str(val).strip().lower() == "nan":
+                return None
+            if isinstance(val, (datetime, pd.Timestamp)):
+                # If it's a pandas Timestamp or datetime, ensure it's tz-aware
+                if val.tzinfo is None:
+                    return val.replace(tzinfo=timezone.utc)
+                return val
+            try:
+                dt = pd.to_datetime(val)
+                if dt.tzinfo is None:
+                    return dt.replace(tzinfo=timezone.utc)
+                return dt
+            except:
+                return None
+
+        open_date = parse_date(open_date_val) or datetime.now(timezone.utc)
+        close_date = parse_date(close_date_val)
+
+        if row_errors:
+            failed += 1
+            errors.append({"row": idx + 2, "name": name, "errors": row_errors})
+            continue
+
+        try:
+            vuln = Vulnerability(
+                title=name,
+                severity=severity,
+                description=description if description != "nan" else None,
+                impact=impact if impact != "nan" else None,
+                remarks=remarks if remarks != "nan" else None,
+                status=vuln_status,
+                discovered_date=open_date,
+                remediation_completed=close_date,
+                application_id=app_id,
+                source="Bulk Upload"
+            )
+            vulnerabilities.append(vuln)
+            successful_vulns.append(name)
+            success += 1
+        except Exception as e:
+            failed += 1
+            errors.append({"row": idx + 2, "name": name, "errors": [str(e)]})
+
+    if vulnerabilities:
+        try:
+            db.add_all(vulnerabilities)
+            await db.flush()
+        except Exception as e:
+            logger.error(f"Database error during bulk insert: {e}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to save vulnerabilities to database"
+            )
+
+    return {
+        "application_id": app_id,
+        "application_name": app_name,
+        "total": total,
+        "success": success,
+        "failed": failed,
+        "successful_vulnerabilities": successful_vulns,
+        "errors": errors
+    }
 
 
 @router.post("/", response_model=VulnerabilityResponse, status_code=status.HTTP_201_CREATED)
